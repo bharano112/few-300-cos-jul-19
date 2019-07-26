@@ -1,0 +1,20 @@
+<div class="btn-group"
+     role="group"
+     aria-label="Basic example">
+  <button type="button"
+          [disabled]="(currentFilter$ | async) === 'all'"
+          (click)="setFilter('all')"
+          class="btn btn-secondary">View All</button>
+  <button type="button"
+          [disabled]="(currentFilter$ | async) === 'incomplete'"
+          (click)="setFilter('incomplete')"
+          class="btn btn-secondary">Only Incomplete</button>
+  <button type="button"
+          [disabled]="(currentFilter$ | async) === 'complete'"
+          (click)="setFilter('complete')"
+          class="btn btn-secondary">Only Complete</button>
+</div>
+<input type="text"
+       #search
+       style="margin-left: 5px"
+       (input)="searchList(search.value)" />
