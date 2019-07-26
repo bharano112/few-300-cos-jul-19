@@ -14,17 +14,17 @@ import * as listActions from '../actions/list.actions';
 @Injectable()
 export class FilterEffects {
 
-  deleteTodos = createEffect(() =>
-    this.actions$.pipe(
-      ofType(listActions.deleteTodo),
-      concatMap(actions => this.client.delete(environment.todosUrl + '/' + actions.entity.id))
-        .pipe(
-          map(x => ({ type: 'noop' })),
-          filter(x => false),
-          catchError((err) => of(listActions.deleteTodoFailed({ entity: action.entity, message: err.error })))
-        )
-    )
-  );
+  // deleteTodos = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(listActions.deleteTodo),
+  //     concatMap(actions => this.client.delete(environment.todosUrl + '/' + actions.entity.id))
+  //       .pipe(
+  //         map(x => ({ type: 'noop' })),
+  //         filter(x => false),
+  //         catchError((err) => of(listActions.deleteTodoFailed({ entity: action.entity, message: err.error })))
+  //       )
+  //   )
+  // );
 
   clearAll = createEffect(() =>
     this.actions$.pipe(
