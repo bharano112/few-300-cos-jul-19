@@ -14,8 +14,12 @@ export const initialState: FilterState = {
   filterText: ''
 };
 
-export const reducer = createReducer(
+const myreducer = createReducer(
   initialState,
   on(actions.setFilter, (state, action) => tassign(state, { listFilter: action.filter })),
   on(actions.setFilterBy, (state, action) => tassign(state, { filterText: action.filterText }))
 );
+
+export function reducer(state: FilterState = initialState, action): FilterState {
+  return myreducer(state, action);
+}

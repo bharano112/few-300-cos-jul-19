@@ -9,7 +9,7 @@ export const initialState: CompleteState = {
   ids: []
 };
 
-export const reducers = createReducer(
+const myreducer = createReducer(
   initialState,
   on(actions.todoItemCompleted, (state, action) => {
     return {
@@ -19,3 +19,9 @@ export const reducers = createReducer(
   on(actions.clearCompleted, () => ({ ids: [] })),
   on(actions.todosLoadedSuccessfully, (state, action) => ({ ids: action.completedIds }))
 );
+
+
+
+export function reducer(state: CompleteState = initialState, action): CompleteState {
+  return myreducer(state, action);
+}

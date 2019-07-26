@@ -18,7 +18,7 @@ export interface TodosState {
 
 export const reducers: ActionReducerMap<TodosState> = {
   list: fromList.reducer,
-  completed: fromCompleted.reducers,
+  completed: fromCompleted.reducer,
   filter: fromFilter.reducer,
   ui: fromUiHints.reducer
 };
