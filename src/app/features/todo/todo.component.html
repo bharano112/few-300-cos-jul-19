@@ -11,16 +11,21 @@
            [routerLinkActive]='["active"]'
            [routerLink]="['entry']">Entry</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link"
+           [routerLinkActive]='["active"]'
+           [routerLink]="['assignments']">Assingments</a>
+      </li>
     </ul>
   </div>
   <div class="col">
-    <div *ngIf="!(loaded$ | async)"
+    <!-- <div *ngIf="!(loaded$ | async)"
          class="alert alert-info">
       <img
            src="https://i0.wp.com/media.boingboing.net/wp-content/uploads/2015/10/tumblr_nlohpxGdBi1tlivlxo1_12801.gif?w=970">
     </div>
-    <div *ngIf="(loaded$ | async)">
-      <router-outlet></router-outlet>
-    </div>
+    <div *ngIf="(loaded$ | async)"> -->
+    <router-outlet></router-outlet>
+    <!-- </div> -->
   </div>
 </section>

@@ -13,16 +13,18 @@ import { EffectsModule } from '@ngrx/effects';
 import { AdminModule } from './features/admin/admin.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavComponent
+    NavComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
-    //AdminModule,
+    // AdminModule,
     TodoModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),

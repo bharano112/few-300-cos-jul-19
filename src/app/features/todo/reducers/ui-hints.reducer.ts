@@ -4,7 +4,6 @@ import * as listActions from '../actions/list.actions';
 
 export interface UiHintsState {
   listLoaded: boolean;
-
 }
 
 const initialState: UiHintsState = {

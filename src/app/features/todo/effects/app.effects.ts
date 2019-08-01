@@ -20,5 +20,14 @@ export class AppEffects {
     )
   );
 
+  // error$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(appActions.appError),
+  //     map(() =>
+  //       appActions.appError()
+  //     )
+  //   )
+  // );
+
   constructor(private actions$: Actions) { }
 }

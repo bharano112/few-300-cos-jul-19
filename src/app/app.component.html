@@ -8,6 +8,6 @@
 
 <main class="container">
   <app-nav></app-nav>
+  <app-error *ngIf="(hasError$ | async)"></app-error>
   <router-outlet></router-outlet>
-
 </main>

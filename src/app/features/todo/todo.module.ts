@@ -11,6 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { FilterEffects } from './effects/filter.effects';
 import { HttpClientModule } from '@angular/common/http';
 import { AppEffects } from './effects/app.effects';
+import { AssignmentsComponent } from './components/assignments/assignments.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
         component: ListComponent
       },
       {
+        path: 'assignments',
+        component: AssignmentsComponent
+      },
+      {
         path: '**',
         redirectTo: 'list'
       }
@@ -34,7 +39,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [TodoComponent, EntryComponent, ListComponent, FilterBarComponent],
+  declarations: [TodoComponent, EntryComponent, ListComponent, FilterBarComponent, AssignmentsComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

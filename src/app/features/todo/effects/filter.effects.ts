@@ -67,10 +67,11 @@ export class FilterEffects {
               description: todo.description
             } as TodoEntity));
             return todosLoadedSuccessfully({ completedIds, todos: todoEntities });
-          })
+          }),
+          catchError((err) => of(appActions.showMessage({ message: err.message, level: 'error' })))
         )
       )
-    ), { dispatch: true });
+    ));
 
   loadFilter$ = createEffect(() =>
     this.actions$.pipe(

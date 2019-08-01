@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { State } from './reducers';
-import { applicationStarted } from './actions/app.actions';
+import { State, selectHasError } from './reducers';
+import { applicationStarted, showMessage } from './actions/app.actions';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
@@ -11,11 +13,14 @@ import { applicationStarted } from './actions/app.actions';
 export class AppComponent implements OnInit {
   title = 'few300';
 
+  hasError$: Observable<boolean>;
+
   constructor(private store: Store<State>) { }
 
 
   ngOnInit() {
     this.store.dispatch(applicationStarted());
+    this.hasError$ = this.store.select(selectHasError);
   }
 
 }

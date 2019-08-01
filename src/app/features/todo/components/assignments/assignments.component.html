@@ -1,0 +1,23 @@
+<div class="form-group">
+  <label for="name">Name</label>
+  <input id="name"
+         #name
+         class="form-control">
+  <input type="button"
+         (click)="add(name)"
+         class="btn btn-primary"
+         value="Add">
+</div>
+
+<h1>Family Assignments</h1>
+<ul class="list-unstyled">
+  <div class="col-md-4">
+    <li *ngFor="let person of people$ | async">
+      <div class="card">
+        <div class="card-body">
+          <h6> {{person.name}} </h6>
+        </div>
+      </div>
+    </li>
+  </div>
+</ul>

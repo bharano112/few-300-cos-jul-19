@@ -6,6 +6,7 @@ import * as models from '../models';
 import * as fromCompleted from './completed.reducer'; // this is a new branch
 import * as fromUiHints from './ui-hints.reducer';
 import * as fromFilter from './filter.reducer';
+import * as fromPeople from './people.reducer';
 import { createSelector, createFeatureSelector, ActionReducerMap } from '@ngrx/store';
 import { filter } from 'minimatch';
 
@@ -14,13 +15,15 @@ export interface TodosState {
   completed: fromCompleted.CompleteState;
   filter: fromFilter.FilterState;
   ui: fromUiHints.UiHintsState;
+  people: fromPeople.PersonEntityState;
 }
 
 export const reducers: ActionReducerMap<TodosState> = {
   list: fromList.reducer,
   completed: fromCompleted.reducer,
   filter: fromFilter.reducer,
-  ui: fromUiHints.reducer
+  ui: fromUiHints.reducer,
+  people: fromPeople.reducer
 };
 
 
@@ -32,7 +35,7 @@ const selectListBranch = createSelector(selectTodosFeatures, f => f.list);
 const selectCompletedBranch = createSelector(selectTodosFeatures, f => f.completed);
 const selectFilterBranch = createSelector(selectTodosFeatures, f => f.filter);
 const selectUiHints = createSelector(selectTodosFeatures, f => f.ui);
-
+const selectPeopleBranch = createSelector(selectTodosFeatures, f => f.people);
 // 3. Any "helpers"
 const { selectAll: selectAllTodoEntities } = fromList.adapter.getSelectors(selectListBranch);
 const selectCompletedIds = createSelector(selectCompletedBranch, b => b.ids);
@@ -41,6 +44,12 @@ export const selectCurrentFilter = createSelector(selectFilterBranch, f => f.lis
 export const selectFilterText = createSelector(selectFilterBranch, f => f.filterText);
 
 export const selectFeatureLoaded = createSelector(selectUiHints, h => h.listLoaded);
+
+export const { selectAll: selectAllPeople } = fromPeople.adapter.getSelectors(selectPeopleBranch);
+
+// export const selectPeople = createSelector(selectAllPeopleEntities, () => {
+//   return selectAllPeopleEntities;
+// });
 
 // 4. exported Selectors for the components
 export const selectUnfilteredTodoList = createSelector(
